@@ -8,6 +8,13 @@ write an analyst-style report. Everything deploys and tears down with Python CDK
 > Built as a portfolio demo of AWS architecture for ISR-style workflows using
 > **only open, civilian data**. No controlled or sensitive information is used.
 
+![Change Analyst showing construction of Gigafactory Texas between May 2020 and June 2022: a change overlay highlights 8.26 km² of change and the Bedrock-generated report describes major industrial construction with high confidence](gigafactory-result.png)
+
+*Example run: Gigafactory Texas, Austin, May 2020 → June 2022. Orange-red marks
+new built-up or bare ground, amber vegetation loss and green vegetation gain. The
+detector measured 8.26 km² of change on a 99% cloud-free scene pair, and the
+Bedrock report identifies the new factory building as the largest change cluster.*
+
 ## How it works
 
 ```mermaid
