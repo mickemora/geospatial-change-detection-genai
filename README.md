@@ -8,7 +8,7 @@ write an analyst-style report. Everything deploys and tears down with Python CDK
 > Built as a portfolio demo of AWS architecture for ISR-style workflows using
 > **only open, civilian data**. No controlled or sensitive information is used.
 
-![Change Analyst showing construction of Gigafactory Texas between May 2020 and June 2022: a change overlay highlights 8.26 km² of change and the Bedrock-generated report describes major industrial construction with high confidence](gigafactory-result.png)
+![Change Analyst showing construction of Gigafactory Texas between May 2020 and June 2022: a change overlay highlights 8.26 km² of change and the Bedrock-generated report describes major industrial construction with high confidence](docs/images/gigafactory-result.png)
 
 *Example run: Gigafactory Texas, Austin, May 2020 → June 2022. Orange-red marks
 new built-up or bare ground, amber vegetation loss and green vegetation gain. The
