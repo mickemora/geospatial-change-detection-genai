@@ -1,0 +1,5 @@
+rasterio>=1.4,<2
+numpy>=1.26,<3
+scipy>=1.11,<2
+pillow>=10,<12
+boto3>=1.34

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Change Analyst</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="map" aria-label="Map"></div>
+
+  <aside class="panel" id="panel">
+    <header class="panel__header">
+      <div>
+        <p class="eyebrow">Sentinel-2 · Bedrock</p>
+        <h1>Change Analyst</h1>
+      </div>
+      <button class="icon-btn" id="collapse" aria-label="Collapse panel" title="Collapse">–</button>
+    </header>
+
+    <div class="panel__body">
+      <section class="block" id="setup">
+        <label class="field">
+          <span>Example site</span>
+          <select id="sample">
+            <option value="">Choose an example…</option>
+          </select>
+        </label>
+
+        <div class="field">
+          <span>Area of interest <em id="aoi-size" class="muted"></em></span>
+          <div class="row">
+            <button class="btn btn--ghost" id="draw">Draw box</button>
+            <button class="btn btn--ghost" id="use-view">Use map view</button>
+          </div>
+          <p class="hint" id="draw-hint">Click two opposite corners on the map. 0.5–15 km per side.</p>
+        </div>
+
+        <div class="row row--split">
+          <label class="field"><span>Before</span><input type="date" id="before"></label>
+          <label class="field"><span>After</span><input type="date" id="after"></label>
+        </div>
+
+        <label class="field">
+          <span>Label <em class="muted">(optional)</em></span>
+          <input type="text" id="label" maxlength="80" placeholder="e.g. New factory site">
+        </label>
+
+        <button class="btn btn--primary" id="run" disabled>Run analysis</button>
+        <p class="error" id="error" role="alert"></p>
+      </section>
+
+      <section class="block hidden" id="progress">
+        <h2>Progress</h2>
+        <ol class="steps" id="steps">
+          <li data-step="QUEUED">Queued</li>
+          <li data-step="SEARCHING">Finding clear scenes</li>
+          <li data-step="DETECTING">Detecting change</li>
+          <li data-step="REPORTING">Writing report</li>
+          <li data-step="COMPLETE">Complete</li>
+        </ol>
+      </section>
+
+      <section class="block hidden" id="result">
+        <div class="layer-toggle" role="group" aria-label="Imagery layer">
+          <button class="seg" data-layer="before">Before</button>
+          <button class="seg" data-layer="after">After</button>
+          <button class="seg" data-layer="basemap">Basemap</button>
+        </div>
+        <label class="field field--inline">
+          <span>Change overlay</span>
+          <input type="range" id="opacity" min="0" max="1" step="0.05" value="0.85">
+        </label>
+        <ul class="legend">
+          <li><i style="--c:#ff5c38"></i>Built-up / bare ground gain</li>
+          <li><i style="--c:#ffc400"></i>Vegetation loss</li>
+          <li><i style="--c:#40dc78"></i>Vegetation gain</li>
+          <li><i style="--c:#5aaaff"></i>Other surface change</li>
+          <li><i style="--c:#555"></i>Cloud / no data</li>
+        </ul>
+
+        <div class="metrics" id="metrics"></div>
+        <article class="report" id="report"></article>
+        <p class="scenes muted" id="scenes"></p>
+      </section>
+
+      <section class="block">
+        <h2>Recent analyses</h2>
+        <ul class="recent" id="recent"><li class="muted">Loading…</li></ul>
+      </section>
+    </div>
+  </aside>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
